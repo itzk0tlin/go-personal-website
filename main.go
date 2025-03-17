@@ -10,6 +10,8 @@ import (
 	"os"
 
 	"github.com/dixxe/personal-website/iternal/controllers"
+	custommiddleware "github.com/dixxe/personal-website/iternal/customMiddleware"
+	"github.com/dixxe/personal-website/iternal/customMiddleware/cron"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"golang.org/x/crypto/acme/autocert"
@@ -33,6 +35,8 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(middleware.StripSlashes)
+	r.Use(custommiddleware.Statistics)
+	r.Use(custommiddleware.DDOSProtection)
 
 	r.Get("/", controllers.GetIndexHandler)
 
@@ -54,6 +58,8 @@ func main() {
 	r.Handle("/static/*", http.StripPrefix("/static/", fs))
 
 	log.Println(domains)
+
+	launchCronJobs()
 
 	if domains[0] == "" {
 
@@ -78,4 +84,10 @@ func redirectHTTPServer() {
 
 func redirectTLS(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "https://"+domains[0]+":443"+r.RequestURI, http.StatusMovedPermanently)
+}
+
+func launchCronJobs() {
+	log.Println("Launching cron jobs...")
+
+	go cron.CleanRecentConnections()
 }

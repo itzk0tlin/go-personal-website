@@ -5,7 +5,7 @@ Generic T represents field of database.
 In this approach DB must be open everytime.
 
 Why interface? For example you create a function that executes something on database
-and you need to execute this command automaticly for any DB that contains service.Post passed.
+and you need to execute this command automaticly for any DB passed which contains service.Post.
 So you will define it like this
 func exec_fix_for_db(repo service.Repository[Post]) {
 	repo.ExecSpecific("Very important fix!!")

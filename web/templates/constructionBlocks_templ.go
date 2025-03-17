@@ -128,7 +128,7 @@ func UsefulLinks() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\"><p>You can find source code of this website   <a href=\"https://github.com/nevafel/go-personal-website\">here.</a></p><p>Telegram - \"@nevafel\"</p><p>Matrix - \"@nullmax17:matrix.org\"</p><p>My friends:  <a href=\"https://t.me/LunfQwak1\">Lunf</a> <a href=\"https://t.me/Ovi4k\">Madam_ovi</a></p></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\"><p>You can find source code of this website   <a href=\"https://github.com/nevafel/go-personal-website\">here.</a></p><p>Telegram - \"@nevafel\"</p><p>Email - social.fedora462@aleeas.com</p><p>My friends:  <a href=\"https://t.me/LunfQwak1\">Lunf</a> <a href=\"https://t.me/Ovi4k\">Madam_ovi</a></p></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

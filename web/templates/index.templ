@@ -5,10 +5,34 @@ Contains useful information and links to other pages
 package templates
 
 import "github.com/dixxe/personal-website/web/static/styling"
+import "fmt"
+import "github.com/dixxe/personal-website/iternal"
 
 templ IndexPage() {
     @BasicPageBlock()
     
+    @indexHeader()
+
+    @mainInfo()
+
+    <hr>
+
+    @projects()
+
+    <hr>
+
+    @additionalInfo()
+    
+    <hr>
+
+    @statistic()
+
+    <hr>
+    
+    @UsefulLinks()
+}
+
+templ indexHeader() {
     <div class={ styling.HelloContainer() }>
         <p style="font-family: Disket-Mono; ">
             <span>Greetings! I'm </span>
@@ -21,7 +45,44 @@ templ IndexPage() {
             <span style="font-size: 40px;"> website</span>
         </p>
     </div>
+}
 
+templ statistic() {
+    <div class={ styling.CenterContainer(), styling.Textcontainer() }>
+        <h2 class={ styling.Header() } style="font-family: Disket-Mono;"> Site statistics </h2>
+        <p> Served {fmt.Sprint(iternal.VisitorAmount)} user requests.</p>
+        <p> Blocked {fmt.Sprint(iternal.PossibleBotsAmount)} bot requests. </p>
+        <p> Blocking {fmt.Sprint(len(iternal.BotsAndTheirTimeout))} request spammers.</p>
+        <p> Running {fmt.Sprint(iternal.CronJobsRunning)} cron jobs.</p>
+    </div>
+}
+
+templ projects() {
+    <div class={ styling.CenterContainer(), styling.Textcontainer() } style="font-size: 20px;">
+        <h2 class={ styling.Header() } style="font-family: Disket-Mono;"> My projects </h2>
+        <p>Vanilla minecraft launcher</p>
+        <p>Minecraft mods</p>
+        <p>Minecraft plugins</p>
+        <p class={ styling.HighlightText() }>Heavy WIP</p>
+    </div>
+}
+
+templ additionalInfo() {
+    <div class={ styling.CenterContainer(), styling.Textcontainer() }>
+        <h1 class={ styling.Header() } style="font-family: Disket-Mono;">More stuff from me</h1>
+
+        <div class={styling.BubbleContainer()}>
+            <a href="/blog">Personal Blog</a>
+        </div>
+
+        <div class={styling.BubbleContainer()}>
+            <a href="https://gitea.dixxe.top:170/nullmax17">Self-hosted public gitea instance</a>
+        </div>
+
+    </div>
+}
+
+templ mainInfo() {
     <div class={ styling.Textcontainer(), styling.CenterContainer() } style="font-size: 20px;">
 
         <h2 class={ styling.Header() } style="font-family: Disket-Mono;">
@@ -34,8 +95,6 @@ templ IndexPage() {
             <span>years old junior software engineer.</span>
             <br>
             <span>Born & live in Russia 🇷🇺 </span>
-            <br>
-            <span>U budućnosti želim da se preselim u Srbiju! 🇷🇸 </span>
             <br>
             <span> I speak native Russian and English(B2)</span>
             <br>
@@ -54,34 +113,7 @@ templ IndexPage() {
         <p>
             <span>I have a passion to learn new, complex things.</span>
             <br>
-            <span>Currently I'm learning C#, ASP.NET, Avalonia</span>
+            <span>Currently I'm refining knowledge in Rust and Go</span>
         </p>
-        </div>
-
-        <hr>
-
-        <div class={ styling.CenterContainer(), styling.Textcontainer() } style="font-size: 20px;">
-        <h2 class={ styling.Header() } style="font-family: Disket-Mono;"> My projects </h2>
-        <p>Vanilla minecraft launcher</p>
-        <p>Minecraft mods</p>
-        <p>Minecraft plugins</p>
-        <p class={ styling.HighlightText() }>Heavy WIP</p>
-        </div>
-
-        <hr>
-
-    <div class={ styling.CenterContainer(), styling.Textcontainer() }>
-        <h1 class={ styling.Header() } style="font-family: Disket-Mono;">More stuff from me</h1>
-
-        <div class={styling.BubbleContainer()}>
-            <a href="/blog">Personal Blog</a>
-        </div>
-
-        <div class={styling.BubbleContainer()}>
-            <a href="https://gitea.dixxe.top:170/nullmax17">Self-hosted public gitea instance</a>
-        </div>
-
     </div>
-    
-    @UsefulLinks()
 }
