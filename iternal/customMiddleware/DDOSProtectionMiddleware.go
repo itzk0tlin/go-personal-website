@@ -4,7 +4,6 @@
 package custommiddleware
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -13,6 +12,7 @@ import (
 )
 
 var alreadyBanned map[string]int = make(map[string]int)
+var goroutineRequested map[string]int = make(map[string]int)
 
 func DDOSProtection(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -22,17 +22,19 @@ func DDOSProtection(h http.Handler) http.Handler {
 		iternal.RecentConnections[responseIp] += 1
 
 		if iternal.RecentConnections[responseIp] >= 20 {
+			if _, ok := goroutineRequested[responseIp]; ok {
+				log.Println("Blocked request.")
+				iternal.PossibleBotsAmount++
+				return
+			}
 			go func() {
+				goroutineRequested[responseIp] = 1
 				time.Sleep(time.Second * 5)
 				r.Close = true
-				iternal.PossibleBotsAmount++
 				iternal.BotsAndTheirTimeout[responseIp] = iternal.RecentConnections[responseIp]
 				banBot(responseIp)
 			}()
-			return
 		}
-
-		fmt.Println(iternal.RecentConnections)
 
 		h.ServeHTTP(w, r)
 	})
@@ -49,6 +51,7 @@ func banBot(bot string) {
 		time.Sleep(time.Second * time.Duration(timeToBan))
 		delete(alreadyBanned, bot)
 		delete(iternal.BotsAndTheirTimeout, bot)
+		delete(goroutineRequested, bot)
 		iternal.RecentConnections[bot] = 0
 		log.Printf("Pardon %v, time's up!", bot)
 	}()
