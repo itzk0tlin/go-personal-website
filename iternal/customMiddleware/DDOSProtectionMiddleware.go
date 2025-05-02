@@ -17,6 +17,7 @@ var goroutineRequested map[string]int = make(map[string]int)
 func DDOSProtection(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
+		// Need to remove port from addres or protection is pointless
 		responseIp := r.RemoteAddr
 
 		iternal.RecentConnections[responseIp] += 1

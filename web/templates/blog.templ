@@ -9,7 +9,7 @@ TODO - make it more DRY and modular in general
 */
 package templates
 
-import "github.com/dixxe/personal-website/web/static/styling"
+import "github.com/dixxe/personal-website/web/templates/styling"
 import "github.com/dixxe/personal-website/iternal/pkg/repositories"
 import "fmt"
 import "strings"
@@ -44,7 +44,7 @@ templ blogHeader() {
     <div class={ styling.BlogHeading() }>
         <div class={styling.BubbleContainer(), styling.BlogHeadingLeft()}>
             <p class={ styling.Header()} style="font-family: Disket-Mono;">
-                Блог вафли
+                Блог невафли
             </p>
         </div>
         <div></div>

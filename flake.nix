@@ -15,14 +15,14 @@
 		  default = pkgs.mkShell {
 			  nativeBuildInputs = with pkgs; [
 					delve
-				  go
+				  	go
 					gopls
 					templ
 				];
 				
 				hardeningDisable = [ "fortify" ];
 
-				shellHook = "echo Welcome to go-backend environment";
+				shellHook = "echo Welcome to dev environment";
 			};
 		};
 	};
