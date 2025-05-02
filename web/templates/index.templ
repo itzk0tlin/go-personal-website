@@ -10,44 +10,70 @@ import "github.com/dixxe/personal-website/iternal"
 
 templ IndexPage() {
     @BasicPageBlock()
-    
-    @indexHeader()
+    @styling.NoiseEffect()
+
+    @top_navigation()
+
+    <div class={styling.CenterPageContainer()}>
+    @styling.AnimatedText("nevafel")
 
     @mainInfo()
 
-    <hr>
-
-    @projects()
-
-    <hr>
-
-    @additionalInfo()
+    </div>
     
-    <hr>
-
-    @statistic()
-
-    <hr>
     
-    @UsefulLinks()
 }
 
-templ indexHeader() {
-    <div class={ styling.HelloContainer() }>
-        <p style="font-family: Disket-Mono; ">
-            <span>Greetings! I'm </span>
-            <br>
-            <span style="font-size: 60px;" class={ styling.Header() }>nevafel</span>
-            <br>
-            <span>and this is my </span>
-            <br>
-            <span style="font-size: 40px;">personal</span>
-            <span style="font-size: 40px;"> website</span>
-        </p>
+templ Contacts() {
+    @BasicPageBlock()
+    @styling.NoiseEffect()
+
+    @top_navigation()
+
+    <div class={ styling.CenterPageContainer(), styling.Textcontainer(), styling.CenterContainer() }>
+        @styling.AnimatedText("contact")
+        <p>Telegram: @nevafel17</p>
+        <p>Email: nevafel17@disroot.org</p>
+        <p>Discord: @nevafel17</p>
     </div>
 }
 
-templ statistic() {
+templ MoreInfo() {
+    @BasicPageBlock()
+    @styling.NoiseEffect()
+
+    @top_navigation()
+
+    <div class={ styling.CenterPageContainer() }>
+        
+        @styling.AnimatedText("info")
+        <div class={ styling.Textcontainer(), styling.CenterContainer() }
+        style="font-family: Roboto; font-size:18px">
+        
+            <p>
+            
+            <span>Chill guy from random town in Russia, whoose dream was building software for people.</span>
+            <br/>
+            <span>While I was practicing my programming skills and were having bad time some good people were with me:</span>
+                <br/>
+                <a href="https://t.me/LunfQwak1">- LunfQwak</a>
+                <br/>
+                <a href="https://t.me/Ovi4k">- Madam_ovi</a>
+                <br/>
+            <span>I'm very gratefull to all support I've recieved ❤️ </span>
+            
+            </p>
+
+        </div>
+        
+        <div class={styling.Textcontainer(), styling.CenterContainer()}>
+            @LinksRaw()
+        </div>
+    
+    </div>
+}
+
+templ Statistic() {
     <div class={ styling.CenterContainer(), styling.Textcontainer() }>
         <h2 class={ styling.Header() } style="font-family: Disket-Mono;"> Site statistics </h2>
         <p> Served {fmt.Sprint(iternal.VisitorAmount)} user requests.</p>
@@ -57,7 +83,7 @@ templ statistic() {
     </div>
 }
 
-templ projects() {
+templ Projects() {
     <div class={ styling.CenterContainer(), styling.Textcontainer() } style="font-size: 20px;">
         <h2 class={ styling.Header() } style="font-family: Disket-Mono;"> My projects </h2>
         <p>Vanilla minecraft launcher</p>
@@ -67,27 +93,8 @@ templ projects() {
     </div>
 }
 
-templ additionalInfo() {
-    <div class={ styling.CenterContainer(), styling.Textcontainer() }>
-        <h1 class={ styling.Header() } style="font-family: Disket-Mono;">More stuff from me</h1>
-
-        <div class={styling.BubbleContainer()}>
-            <a href="/blog">Personal Blog</a>
-        </div>
-
-        <div class={styling.BubbleContainer()}>
-            <a href="https://gitea.dixxe.top:170/nullmax17">Self-hosted public gitea instance</a>
-        </div>
-
-    </div>
-}
-
 templ mainInfo() {
-    <div class={ styling.Textcontainer(), styling.CenterContainer() } style="font-size: 20px;">
-
-        <h2 class={ styling.Header() } style="font-family: Disket-Mono;">
-            About me
-        </h2>
+    <div class={ styling.Textcontainer(), styling.CenterContainer() } style="font-size: 20px;font-family:Roboto;">
 
         <p>
             <span>I'm </span>
@@ -109,11 +116,46 @@ templ mainInfo() {
             <span>and</span>
             <span class={ styling.HighlightText() }>Linux</span>
         </p>
-
-        <p>
-            <span>I have a passion to learn new, complex things.</span>
-            <br>
-            <span>Currently I'm refining knowledge in Rust and Go</span>
-        </p>
     </div>
+}
+
+templ top_navigation() {
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">More info</a>
+    </div>
+    <style>
+
+        .topnav {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        }
+
+        .topnav-items {
+            margin: 10px;
+        }
+
+        .topnav a {
+        position: relative;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        font-size: 17px;
+        border-radius: 10px;
+        transition: background-color 500ms, border 500ms, border-radius 500ms;
+        }
+
+        .topnav a:hover {
+        background-color: #749F3B;
+        border: #749F3B;
+        border-radius: 10px;
+        color: black;
+        }
+    </style>
 }

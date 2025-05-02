@@ -39,6 +39,8 @@ func main() {
 	r.Use(custommiddleware.DDOSProtection)
 
 	r.Get("/", controllers.GetIndexHandler)
+	r.Get("/contact", controllers.GetContactHandler)
+	r.Get("/about", controllers.GetAboutHandler)
 
 	r.Get("/blog", controllers.GetShowBlog)
 	r.Get("/post/{id}", controllers.GetPost)

@@ -15,12 +15,6 @@ Currently all elements are not sorted.
 Be aware that class names in final html page will be random.
 */
 
-var mainColor = "#749F3B"
-var contrastColor = "#3B749F" // Contrast to mainColor
-var bgColor = "#1e1e1e"
-var bgVariation = "#1B1B1B" // Color simmilar to bg
-var textColor = "#dadada"
-
 func BlogFormInput() templ.CSSClass {
 	templ_7745c5c3_CSSBuilder := templruntime.GetBuilder()
 	templ_7745c5c3_CSSBuilder.WriteString(`width:70%;`)
@@ -40,7 +34,7 @@ func BlogFormInput() templ.CSSClass {
 
 func FileHeader() templ.CSSClass {
 	templ_7745c5c3_CSSBuilder := templruntime.GetBuilder()
-	templ_7745c5c3_CSSBuilder.WriteString(string(templ.SanitizeCSS(`color`, mainColor)))
+	templ_7745c5c3_CSSBuilder.WriteString(string(templ.SanitizeCSS(`color`, MainColor)))
 	templ_7745c5c3_CSSBuilder.WriteString(`text-align:center;`)
 	templ_7745c5c3_CSSID := templ.CSSID(`FileHeader`, templ_7745c5c3_CSSBuilder.String())
 	return templ.ComponentCSSClass{
@@ -51,7 +45,7 @@ func FileHeader() templ.CSSClass {
 
 func Header() templ.CSSClass {
 	templ_7745c5c3_CSSBuilder := templruntime.GetBuilder()
-	templ_7745c5c3_CSSBuilder.WriteString(string(templ.SanitizeCSS(`color`, mainColor)))
+	templ_7745c5c3_CSSBuilder.WriteString(string(templ.SanitizeCSS(`color`, MainColor)))
 	templ_7745c5c3_CSSBuilder.WriteString(`text-align:left;`)
 	templ_7745c5c3_CSSID := templ.CSSID(`Header`, templ_7745c5c3_CSSBuilder.String())
 	return templ.ComponentCSSClass{
@@ -62,7 +56,7 @@ func Header() templ.CSSClass {
 
 func HighlightText() templ.CSSClass {
 	templ_7745c5c3_CSSBuilder := templruntime.GetBuilder()
-	templ_7745c5c3_CSSBuilder.WriteString(string(templ.SanitizeCSS(`color`, contrastColor)))
+	templ_7745c5c3_CSSBuilder.WriteString(string(templ.SanitizeCSS(`color`, ContrastColor)))
 	templ_7745c5c3_CSSBuilder.WriteString(`font-weight:bold;`)
 	templ_7745c5c3_CSSID := templ.CSSID(`HighlightText`, templ_7745c5c3_CSSBuilder.String())
 	return templ.ComponentCSSClass{
@@ -135,7 +129,7 @@ func PostScriptum() templ.CSSClass {
 	templ_7745c5c3_CSSBuilder := templruntime.GetBuilder()
 	templ_7745c5c3_CSSBuilder.WriteString(`text-align:center;`)
 	templ_7745c5c3_CSSBuilder.WriteString(`font-size:12px;`)
-	templ_7745c5c3_CSSBuilder.WriteString(string(templ.SanitizeCSS(`color`, contrastColor)))
+	templ_7745c5c3_CSSBuilder.WriteString(string(templ.SanitizeCSS(`color`, ContrastColor)))
 	templ_7745c5c3_CSSID := templ.CSSID(`PostScriptum`, templ_7745c5c3_CSSBuilder.String())
 	return templ.ComponentCSSClass{
 		ID:    templ_7745c5c3_CSSID,
