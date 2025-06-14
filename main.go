@@ -41,6 +41,7 @@ func main() {
 	r.Get("/", controllers.GetIndexHandler)
 	r.Get("/contact", controllers.GetContactHandler)
 	r.Get("/about", controllers.GetAboutHandler)
+	r.Get("/projects", controllers.GetProjectsHandler)
 
 	r.Get("/blog", controllers.GetShowBlog)
 	r.Get("/post/{id}", controllers.GetPost)

@@ -32,3 +32,10 @@ func GetAboutHandler(w http.ResponseWriter, r *http.Request) {
 	component := templates.MoreInfo()
 	component.Render(context.Background(), w)
 }
+
+func GetProjectsHandler(w http.ResponseWriter, r *http.Request) {
+	// Templates are components and this is basic way to render them.
+	// I use this way across all code
+	component := templates.WIPPage()
+	component.Render(context.Background(), w)
+}
